@@ -1,21 +1,24 @@
 /* Loop Functions */
 
-page = "question";
-function questionMaker(){
-  x = Math.floor(Math.random()*(highFactor-lowFactor+1))+lowFactor;
-  y = Math.floor(Math.random()*(highFactor-lowFactor+1))+lowFactor;
+function questionMaker(factors){
+  x = Math.floor(Math.random()*(factors[1]-factors[0]+1))+factors[0];
+  y = Math.floor(Math.random()*(factors[1]-factors[0]+1))+factors[0];
+  solution = x * y;
 }
 
-
-  /* q Problems, tells answer or correct + # left 
-  * + m mistakes made */
-function forLoop(){
+/* FOR LOOP 
+* q Problems, tells answer or correct + # left 
+* + m mistakes made 
+*/
+function forLoop(factors){
+  alert("For here!");
+  alert(factors.toString());
   var mistakes = 0;
   for(question = 1;question <= loopQuestions; question++){
     questionMaker();
-    while (answer != x*y) {
+    while (answer != solution) {
       answer = prompt("What is "+x+" * "+y+"?");
-      if (answer != x*y) {
+      if (answer != solution) {
         alert("Wrong!");
         mistakes ++;
       }
@@ -28,14 +31,18 @@ function forLoop(){
   return mistakes;
 }
 
-  /* # Problems, tells answer or correct + # left 
-  * + # mistakes made */
-function whileLoop(){
+/* WHILE LOOP
+  * # Problems, tells answer or correct + # left 
+  * + # mistakes made 
+  */
+function whileLoop(factors){
+  alert("While here!");
+  alert(factors.toString());
   question = 1;
   while(question <= whileQuestions){
       questionMaker();
       answer = prompt("What is "+x+" * "+y+"?");
-      if (answer != x*y) {
+      if (answer != solution) {
         alert("Wrong!");
         mistakes ++;
       }
@@ -46,4 +53,9 @@ function whileLoop(){
       }
   }
   return mistakes;
+}
+
+/* CUSTOM LOOP WITH TIMER NEEDED! */
+function customLoop() {
+
 }
